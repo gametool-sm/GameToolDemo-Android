@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#10000000">
+
+    <ImageView
+        android:id="@+id/demo_icon_iv"
+        android:layout_width="@dimen/gt_63dp"
+        android:layout_height="@dimen/gt_63dp"
+        android:layout_marginTop="@dimen/gt_20dp"
+        android:src="@drawable/demo_gametool_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/demo_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gt_10dp"
+        android:text="GAMETOOL"
+        android:textColor="@color/color_3391ff"
+        android:textSize="@dimen/gt_22dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/demo_icon_iv" />
+
+    <TextView
+        android:id="@+id/demo_init_gtsdk_tv"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/gt_42dp"
+        android:layout_marginHorizontal="@dimen/gt_30dp"
+        android:layout_marginTop="@dimen/gt_15dp"
+        android:background="@drawable/demo_bg_solid_f9f9f9_corner_10"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/gt_12dp"
+        android:text="初始化"
+        android:textColor="@color/color_112640"
+        android:textSize="@dimen/gt_14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/demo_title_tv" />
+
+    <TextView
+        android:id="@+id/demo_custom_init_gtsdk_tv"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/gt_42dp"
+        android:layout_marginStart="@dimen/gt_30dp"
+        android:layout_marginTop="@dimen/gt_10dp"
+        android:layout_marginEnd="@dimen/gt_20dp"
+        android:background="@drawable/demo_bg_solid_f9f9f9_corner_10"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/gt_12dp"
+        android:text="自定义"
+        android:textColor="@color/color_112640"
+        android:textSize="@dimen/gt_14dp"
+        app:layout_constraintEnd_toStartOf="@+id/demo_show_gtsdk_dialog_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/demo_init_gtsdk_tv" />
+
+    <TextView
+        android:id="@+id/demo_show_gtsdk_dialog_tv"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/gt_42dp"
+        android:layout_marginEnd="@dimen/gt_30dp"
+        android:background="@drawable/demo_bg_solid_f9f9f9_corner_10"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/gt_12dp"
+        android:text="打开弹窗"
+        android:textColor="@color/color_112640"
+        android:textSize="@dimen/gt_14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/demo_custom_init_gtsdk_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/demo_custom_init_gtsdk_tv"
+        app:layout_constraintTop_toTopOf="@+id/demo_custom_init_gtsdk_tv" />
+
+    <TextView
+        android:id="@+id/demo_clicks_tv"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/gt_42dp"
+        android:layout_marginStart="@dimen/gt_30dp"
+        android:layout_marginTop="@dimen/gt_10dp"
+        android:layout_marginEnd="@dimen/gt_20dp"
+        android:background="@drawable/demo_bg_solid_f9f9f9_corner_10"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/gt_12dp"
+        android:text="点击次数：0"
+        android:textColor="@color/color_112640"
+        android:textSize="@dimen/gt_14dp"
+        app:layout_constraintEnd_toStartOf="@+id/demo_user_id_et"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/demo_custom_init_gtsdk_tv" />
+
+    <EditText
+        android:id="@+id/demo_user_id_et"
+        style="@style/GtEditTextWithBackStyle"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/gt_42dp"
+        android:layout_marginHorizontal="30dp"
+        android:hint="请输入userId用于登入"
+        android:imeOptions="flagNoExtractUi"
+        android:paddingHorizontal="@dimen/gt_10dp"
+        android:textColor="@color/color_112640"
+        android:textColorHint="@color/color_80112640"
+        app:layout_constraintBottom_toBottomOf="@+id/demo_clicks_tv"
+        app:layout_constraintEnd_toStartOf="@+id/demo_long_press_times_tv"
+        app:layout_constraintStart_toEndOf="@+id/demo_clicks_tv"
+        app:layout_constraintTop_toTopOf="@+id/demo_clicks_tv" />
+
+    <TextView
+        android:id="@+id/demo_long_press_times_tv"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/gt_42dp"
+        android:layout_marginEnd="@dimen/gt_30dp"
+        android:background="@drawable/demo_bg_solid_f9f9f9_corner_10"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/gt_12dp"
+        android:text="长按次数：0"
+        android:textColor="@color/color_112640"
+        android:textSize="@dimen/gt_14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/demo_clicks_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/demo_user_id_et"
+        app:layout_constraintTop_toTopOf="@+id/demo_clicks_tv" />
+
+
+    <TextView
+        android:id="@+id/demo_login_tv"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/gt_42dp"
+        android:layout_marginHorizontal="@dimen/gt_30dp"
+        android:layout_marginBottom="@dimen/gt_20dp"
+        android:background="@drawable/demo_bg_solid_3391ff_corner_12"
+        android:gravity="center"
+        android:text="登入"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

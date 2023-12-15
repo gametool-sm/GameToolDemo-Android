@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#10000000">
+
+    <ImageView
+        android:id="@+id/demo_icon_iv"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/demo_gametool_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/demo_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="GAMETOOL"
+        android:textColor="@color/color_3391ff"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/demo_icon_iv" />
+
+    <TextView
+        android:id="@+id/demo_init_gtsdk_tv"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/demo_bg_solid_f9f9f9_corner_10"
+        android:gravity="center"
+        android:paddingHorizontal="12dp"
+        android:text="初始化"
+        android:textColor="@color/color_112640"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/demo_title_tv" />
+
+    <TextView
+        android:id="@+id/demo_custom_init_gtsdk_tv"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/demo_bg_solid_f9f9f9_corner_10"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="12dp"
+        android:text="自定义"
+        android:textColor="@color/color_112640"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toStartOf="@+id/demo_show_gtsdk_dialog_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/demo_init_gtsdk_tv" />
+
+    <TextView
+        android:id="@+id/demo_show_gtsdk_dialog_tv"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/demo_bg_solid_f9f9f9_corner_10"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:text="打开弹窗"
+        android:textColor="@color/color_112640"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/demo_custom_init_gtsdk_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/demo_custom_init_gtsdk_tv"
+        app:layout_constraintTop_toTopOf="@+id/demo_custom_init_gtsdk_tv" />
+
+    <TextView
+        android:id="@+id/demo_clicks_tv"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/demo_bg_solid_f9f9f9_corner_10"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="12dp"
+        android:text="点击次数：0"
+        android:textColor="@color/color_112640"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toStartOf="@+id/demo_long_press_times_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/demo_custom_init_gtsdk_tv" />
+
+    <TextView
+        android:id="@+id/demo_long_press_times_tv"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/demo_bg_solid_f9f9f9_corner_10"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:text="长按次数：0"
+        android:textColor="@color/color_112640"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/demo_clicks_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/demo_clicks_tv"
+        app:layout_constraintTop_toTopOf="@+id/demo_clicks_tv" />
+
+    <EditText
+        android:id="@+id/demo_user_id_et"
+        style="@style/EditTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="10dp"
+        android:hint="请输入userId用于登入"
+        android:imeOptions="flagNoExtractUi"
+        android:paddingHorizontal="10dp"
+        android:textColor="@color/color_112640"
+        android:textColorHint="#80112640"
+        app:layout_constraintBottom_toTopOf="@+id/demo_login_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/demo_login_tv"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/demo_bg_solid_3391ff_corner_12"
+        android:gravity="center"
+        android:text="登入"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
