@@ -1,10 +1,14 @@
 package com.gametool.demo;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,64 +21,101 @@ import com.gametool.gtsdk.utils.GTSDK;
 public class QuickStartActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "GTSDK-demo";
-
-    private TextView initTv;
-    private TextView customInitTv;
-    private TextView showGtDialogTv;
-    private TextView clicksTv;
-    private TextView longPressTimesTv;
-    private EditText userIdEt;
-    private TextView loginTv;
-
-    private long clickNum = 0;
-    private long longPressNum = 0;
+    private static final String SP_CURRENT_INIT_YPE = "spCurrentInitType";
+    /**
+     * 默认初始化类型启动
+     */
+    private static final int INIT_TYPE_DEFAULT = 0;
 
     /**
-     * 是否初始化成功
+     * 自定义初始化类型启动
+     */
+    private static final int INIT_TYPE_CUSTOM = 1;
+
+    private SharedPreferences sp;
+    private TextView initTypeTv;
+    private TextView switchInitTypeTv;
+    private EditText userIdEt;
+    private TextView loginTv;
+    private TextView showGtDialogTv;
+
+    /**
+     * 是否默认初始化成功
      */
     private boolean isInitSuccess;
 
     /**
-     * 是否是自定义初始化
+     * 是否自定义初始化成功
      */
     private boolean isCustomInitSuccess;
+
+    private void toastMessage(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    private int getCurrentInitType() {
+        return sp.getInt(SP_CURRENT_INIT_YPE, INIT_TYPE_DEFAULT);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sp = getSharedPreferences("GTSDK-DEMO", Context.MODE_PRIVATE);
         StatusUtil.setFullScreenStatus(this);
         setContentView(R.layout.activity_quick_start);
 
-        initTv = findViewById(R.id.demo_init_gtsdk_tv);
-        customInitTv = findViewById(R.id.demo_custom_init_gtsdk_tv);
-        showGtDialogTv = findViewById(R.id.demo_show_gtsdk_dialog_tv);
+        initTypeTv = findViewById(R.id.demo_init_gtsdk_type_tv);
+        switchInitTypeTv = findViewById(R.id.demo_switch_init_gtsdk_type_tv);
         userIdEt = findViewById(R.id.demo_user_id_et);
-        loginTv = findViewById(R.id.demo_login_tv);
-        clicksTv = findViewById(R.id.demo_clicks_tv);
-        longPressTimesTv = findViewById(R.id.demo_long_press_times_tv);
-        clicksTv.setOnClickListener(v -> clicksTv.setText(String.format("点击次数：%1$s", ++clickNum)));
-        longPressTimesTv.setOnLongClickListener(v -> {
-            longPressTimesTv.setText(String.format("长按次数：%1$s", ++longPressNum));
-            return true;
-        });
+        loginTv = findViewById(R.id.demo_login_gtsdk_tv);
+        showGtDialogTv = findViewById(R.id.demo_show_gtsdk_dialog_tv);
 
-        //接入示例相关
-        initTv.setOnClickListener(this);
-        customInitTv.setOnClickListener(this);
+        switchInitTypeTv.setOnClickListener(this);
+        loginTv.setOnClickListener(this);
         showGtDialogTv.setOnClickListener(this);
-        initTv.setOnClickListener(this);
+
+        //GTSDK初始化
+        int currentInitType = getCurrentInitType();
+        if (currentInitType == INIT_TYPE_DEFAULT) {
+            //默认类型初始化
+            initGTSDK();
+            initTypeTv.setText("初始化类型：默认");
+            switchInitTypeTv.setText("自定义");
+            showGtDialogTv.setVisibility(View.GONE);
+        } else if (currentInitType == INIT_TYPE_CUSTOM) {
+            //自定义类型初始化
+            customInitGTSDK();
+            initTypeTv.setText("初始化类型：自定义");
+            switchInitTypeTv.setText("默认");
+            showGtDialogTv.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void onClick(View v) {
-        if (v == initTv) {
-            initGTSDK();
-        } else if (v == customInitTv) {
-            customInitGTSDK();
-        } else if (v == showGtDialogTv) {
-            showGtDialog();
+        if (v == switchInitTypeTv) {
+            switchInitType();
         } else if (v == loginTv) {
             toLogin();
+        } else if (v == showGtDialogTv) {
+            showGtDialog();
+        }
+    }
+
+    private void switchInitType() {
+        int currentInitType = getCurrentInitType();
+        if (currentInitType == INIT_TYPE_DEFAULT) {
+            //切换到自定义类型初始化
+            sp.edit().putInt(SP_CURRENT_INIT_YPE, INIT_TYPE_CUSTOM).apply();
+            initTypeTv.setText("初始化类型：自定义");
+            switchInitTypeTv.setText("默认");
+            showGtDialogTv.setVisibility(View.VISIBLE);
+        } else if (currentInitType == INIT_TYPE_CUSTOM) {
+            //切换到默认类型初始化
+            sp.edit().putInt(SP_CURRENT_INIT_YPE, INIT_TYPE_DEFAULT).apply();
+            initTypeTv.setText("初始化类型：默认");
+            switchInitTypeTv.setText("自定义");
+            showGtDialogTv.setVisibility(View.GONE);
         }
     }
 
@@ -94,7 +135,7 @@ public class QuickStartActivity extends AppCompatActivity implements View.OnClic
             public void onFail(String s) {
                 //初始化失败
                 isInitSuccess = false;
-                Log.d(TAG, "初始化失败，原因：" + s);
+                Log.e(TAG, "默认初始化失败，原因：" + s);
             }
         });
     }
@@ -117,7 +158,7 @@ public class QuickStartActivity extends AppCompatActivity implements View.OnClic
                 //自定义初始化失败
                 isInitSuccess = false;
                 isCustomInitSuccess = false;
-                Log.d(TAG, "自定义初始化失败，原因：" + s);
+                Log.e(TAG, "自定义初始化失败，原因：" + s);
             }
         });
     }
@@ -139,13 +180,15 @@ public class QuickStartActivity extends AppCompatActivity implements View.OnClic
      */
     private void toLogin() {
         if (!isInitSuccess) {
-            Log.d(TAG, "请先初始化");
             return;
         }
-        userIdEt.clearFocus();
         //游戏方自己提供的针对用户的唯一标识
         String userId = userIdEt.getText().toString();
-        //真正的登录API调用，userId由游戏方传
+        if (TextUtils.isEmpty(userId)) {
+            toastMessage("请先输入userId");
+        }
+        userIdEt.clearFocus();
+        //真正的登录API调用，参数为用户唯一标识
         GTSDK.loginWithUserId(userId);
     }
 
