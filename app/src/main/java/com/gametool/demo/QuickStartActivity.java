@@ -117,6 +117,8 @@ public class QuickStartActivity extends AppCompatActivity implements View.OnClic
             switchInitTypeTv.setText("自定义");
             showGtDialogTv.setVisibility(View.GONE);
         }
+
+        new SwitchInitTypeDialog(this).show();
     }
 
     /**
