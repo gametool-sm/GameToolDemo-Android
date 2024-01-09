@@ -53,7 +53,7 @@
             android:background="@drawable/demo_bg_solid_3391ff_corner_12"
             android:gravity="center"
             android:text="确认"
-            android:textColor="@color/color_white"
+            android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
