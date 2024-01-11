@@ -63,6 +63,6 @@ dependencies {
     //    exclude group: 'com.github.bumptech.glide', module: 'glide'
     //}
 
-    //方式二：直接引入依赖
-    implementation 'io.github.gametool-sm:GameToolSDK:0.4'
+    ////方式二：直接引入依赖
+    implementation 'io.github.gametool-sm:GameToolSDK:0.5'
 }
