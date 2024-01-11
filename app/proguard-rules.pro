@@ -26,42 +26,6 @@
 -dontshrink
 # 保存包名
 -keeppackagenames
-#============================oaid相关混淆==============================
--keep class com.bun.miitmdid.core.** {*;}
--keep class com.bun.lib.**{*;}
--keep class com.bun.miitmdid.**{*;}
--keep interface com.bun.supplier.** { *; }
--keep class XI.CA.XI.**{*;}
--keep class XI.K0.XI.**{*;}
--keep class XI.XI.K0.**{*;}
--keep class XI.xo.XI.XI.**{*;}
--keep public class com.netease.nis.sdkwrapper.Utils {public <methods>;}
-# asus
--keep class com.asus.msa.SupplementaryDID.**{*;}
--keep class com.asus.msa.sdid.**{*;}
-# huawei
--keep class com.huawei.hms.ads.** {*;}
--keep class com.huawei.hms.ads.identifier.**{*;}
--keep interface com.huawei.hms.ads.** {*;}
-# lenovo
--keep class com.zui.deviceidservice.** {*;}
--keep class com.zui.opendeviceidlibrary.** {*;}
-# meizu
--keep class com.meizu.flyme.openidsdk.** {*;}
-# nubia
--keep class com.bun.miitmdid.provider.nubia.NubiaIdentityImpl {*;}
-# oppo
--keep class com.heytap.openid.** {*;}
-# samsung
--keep class com.samsung.android.deviceidservice.**{*;}
-# vivo
--keep class com.vivo.identifier.** {*;}
-# xiaomi
--keep class com.bun.miitmdid.provider.xiaomi.IdentifierManager {*;}
-# zte
--keep class com.bun.lib.** { *; }
-# coolpad
--keep class com.coolpad.deviceidsupport.** { *; }
 #=====================================================================
 # 保留所有的本地native方法不被混淆
 -keepclasseswithmembernames class * {
@@ -195,19 +159,21 @@
     boolean isLimitAdTrackingEnabled();
 }
 
--keep class com.gametool.base.utils.ScreenUtil{*;}
--keep class com.gametool.gtsdk.utils.GTSDK{*;}
--keep class com.gametool.gtsdk.utils.GTSDK$InitListener{*;}
 #接口数据 bean 类不混淆
 -keep class com.gametool.base.network.bean.**{
     <fields>;
     <methods>;
 }
+
+-keep class com.gametool.base.utils.ScreenUtil{*;}
+-keep class com.gametool.gtsdk.utils.GTSDK{*;}
+-keep class com.gametool.gtsdk.utils.GTSDK$InitListener{*;}
+
 -keep class com.smwl.x7encrypt.**{*;}
 -dontwarn com.smwl.x7encrypt.**
 
-# ContentProvider的继承类不能被混淆
-#-keep class com.gametool.speedup.plugin.GtSpeedupProvider{*;}
-
 # filedownloader不能被混淆
 -keep class com.liulishuo.filedownloader.**{*;}
+
+# ISpeedupConfigCallback不能被混淆
+-keep interface  com.gametool.speedup.callback.ISpeedupConfigCallback{*;}
