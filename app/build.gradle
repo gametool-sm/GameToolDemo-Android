@@ -65,5 +65,5 @@ dependencies {
     //}
 
     //****************** 方式二：依赖接入 ******************
-    implementation 'io.github.gametool-sm:GameToolSDK:0.6'
+    implementation 'io.github.gametool-sm:GameToolSDK:0.7'
 }
