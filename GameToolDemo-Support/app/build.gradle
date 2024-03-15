@@ -44,18 +44,18 @@ dependencies {
     //aar接入
     implementation(fileTree("libs/gtsdk-support.aar"));
     //引入arr需要依赖
-    implementation('com.squareup.retrofit2:retrofit:2.9.0')
-    implementation('com.squareup.retrofit2:converter-gson:2.9.0')
-    implementation('com.squareup.retrofit2:converter-scalars:2.4.0')
-    implementation('com.squareup.okhttp3:logging-interceptor:4.7.2')
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
 
-    implementation('io.reactivex.rxjava2:rxandroid:2.1.0')
-    implementation('io.reactivex.rxjava2:rxjava:2.2.5')
-    implementation('com.squareup.retrofit2:adapter-rxjava2:2.3.0')
-    implementation('com.google.android.gms:play-services-ads-identifier:15.0.0')
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.5'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.google.android.gms:play-services-ads-identifier:15.0.0'
 
-    implementation('org.greenrobot:eventbus:3.1.1')
-    implementation('org.litepal.guolindev:core:3.2.0')
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'org.litepal.guolindev:core:3.2.0'
     implementation('com.github.bumptech.glide:glide:4.4.0') {
         exclude group: 'com.android.support'
     }
