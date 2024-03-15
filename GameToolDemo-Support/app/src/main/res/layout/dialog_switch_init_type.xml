@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="310sp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/demo_bg_solid_white_corner_20"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="24sp"
+    android:paddingVertical="20sp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="温馨提示"
+        android:textColor="@color/color_112640"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18sp"
+        android:gravity="center"
+        android:text="点击确认将退出示例demo\n重新启动后将切换初始化模式"
+        android:textColor="@color/color_112640"
+        android:textSize="14sp" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="42sp"
+        android:layout_marginTop="18sp">
+
+        <TextView
+            android:id="@+id/cancel_tv"
+            android:layout_width="126sp"
+            android:layout_height="match_parent"
+            android:background="@drawable/demo_bg_solid_0f112640_corner_12"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="#3e4956"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ensure_tv"
+            android:layout_width="126sp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10sp"
+            android:background="@drawable/demo_bg_solid_3391ff_corner_12"
+            android:gravity="center"
+            android:text="确认"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>
